@@ -16,9 +16,7 @@ public class ValidationUtils {
         ProductsEntity products = orders.getProducts();
         if (products == null) //|| publishing.getPublishing().isBlank() || publishing.getPublishing().length() < 3 || publishing.getPublishing().length() > 30
             throw new ValidationExceptionOrders("Название издательства должна быть от 3 до 30 символов");
-        String kind = orders.getKind();
-        if (kind == null || kind.isBlank() || kind.length() < 3 || kind.length() > 30)
-            throw new ValidationExceptionOrders("Жанр должен быть от 3 до 30 символов");
+
     }
 }
 

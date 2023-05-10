@@ -17,7 +17,6 @@ public class OrdersEntity {
     private Long id;
     @NotBlank
     private String orders;
-
     @NotNull
     @ManyToOne
     @JoinColumn(name = "clients_id")
@@ -26,5 +25,4 @@ public class OrdersEntity {
     @ManyToOne
     @JoinColumn(name = "products_id")
     private ProductsEntity products;
-    private String kind;
 }

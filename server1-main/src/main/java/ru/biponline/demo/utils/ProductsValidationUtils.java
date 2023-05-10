@@ -7,8 +7,8 @@ public class ProductsValidationUtils
 {
     public static void validationProducts(ProductsEntity data)throws ValidationExceptionProducts
     {
-        String title = data.getProducts();
-        if (title == null||title.isBlank())
+        String name = data.getProducts();
+        if (name == null||name.isBlank())
         {
             throw new ValidationExceptionProducts("Название пустое");
         }

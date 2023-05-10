@@ -20,7 +20,7 @@ public class ClientsEntity
     @NotBlank(message = "Фамилия не может быть пустым")
     private String lastname;
     private String surname;
-//    @JsonIgnore
-//    @OneToMany(cascade =  CascadeType.ALL,mappedBy = "clients")
-//    private List<OrdersEntity> orders;
+    @JsonIgnore
+   @OneToMany(cascade =  CascadeType.ALL,mappedBy = "clients")
+    private List<OrdersEntity> orders;
 }

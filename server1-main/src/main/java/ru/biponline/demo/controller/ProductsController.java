@@ -51,6 +51,21 @@ public class ProductsController {
     @GetMapping("/all")
     public ResponseEntity<BaseResponse> getAll(){return ResponseEntity.ok(new ProductsListResponse(service.getAll())); }
 
-
+    @GetMapping("/name")
+    public ResponseEntity<BaseResponse> findByName(@RequestParam String name) {
+        return ResponseEntity.ok(new ProductsListResponse(service.findByName(name)));
+    }
+    @GetMapping("/category")
+    public ResponseEntity<BaseResponse> findByCategory(@RequestParam String category) {
+        return ResponseEntity.ok(new ProductsListResponse(service.findByCategory(category)));
+    }
+    @GetMapping("/material")
+    public ResponseEntity<BaseResponse> findByMaterial(@RequestParam String material) {
+        return ResponseEntity.ok(new ProductsListResponse(service.findByMaterial(material)));
+    }
+    @GetMapping("/qanitity")
+    public ResponseEntity<BaseResponse> findByQanitity(@RequestParam int qanitity) {
+        return ResponseEntity.ok(new ProductsListResponse(service.findByQanitity(qanitity)));
+    }
 
 }

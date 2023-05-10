@@ -14,7 +14,7 @@ public class ProductsEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long products_id;
+    private Long id;
     @NotBlank(message =  "имя")
     private String name;
     @NotBlank(message =  "товар")
@@ -24,9 +24,9 @@ public class ProductsEntity
     @NotBlank(message =  "материал")
     private String material;
     @NotBlank(message =  "количество")
-    private String qanitity;
+    private int qanitity;
 
-//    @JsonIgnore
-//    @OneToMany(cascade =  CascadeType.ALL,mappedBy = "Products")
-//    private List<OrdersEntity> orders;
+    @JsonIgnore
+    @OneToMany(cascade =  CascadeType.ALL,mappedBy = "products")
+    private List<OrdersEntity> orders;
 }

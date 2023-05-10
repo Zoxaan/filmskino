@@ -15,12 +15,12 @@ public class ClientsValidationUtils
         String lastname = data.getLastname();
         if (lastname == null||lastname.isBlank())
         {
-            throw new ValidationExceptionClients("Фамилия автора");
+            throw new ValidationExceptionClients("Фамилия");
         }
         String surname = data.getSurname();
         if (surname == null||surname.isBlank())
         {
-            throw new ValidationExceptionClients("Отчество автора");
+            throw new ValidationExceptionClients("Отчество");
         }
     }
 }

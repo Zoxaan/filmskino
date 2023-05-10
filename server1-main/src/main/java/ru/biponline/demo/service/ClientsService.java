@@ -10,7 +10,7 @@ public class ClientsService {
     public ClientsService(ClientsRepo repo) {
         this.repo = repo;
     }
-    public void save(ClientsEntity book) {repo.save(book);}
+    public void save(ClientsEntity clients) {repo.save(clients);}
     public void delete(Long id){repo.deleteById(id);}
     public Iterable<ClientsEntity> getAll(){return repo.findAll();}
 }
