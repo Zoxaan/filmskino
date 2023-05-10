@@ -3,9 +3,10 @@ package ru.biponline.demo.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.biponline.demo.entity.ClientsEntity;
-import ru.biponline.demo.response.ClientsListResponse;
 import ru.biponline.demo.response.BaseResponse;
+import ru.biponline.demo.response.ClientsListResponse;
 import ru.biponline.demo.service.ClientsService;
+import ru.biponline.demo.utils.ClientsValidationUtils;
 
 import static ru.biponline.demo.utils.ClientsValidationUtils.validationClients;
 
@@ -18,7 +19,7 @@ public class ClientsController {
     @PostMapping("/add")
     public ResponseEntity<BaseResponse> add(@RequestBody ClientsEntity data){
         try {
-
+            ClientsValidationUtils.validationClients(data);
 
             service.save(data);
             return ResponseEntity.ok(new BaseResponse(true,"клиент добавлен"));

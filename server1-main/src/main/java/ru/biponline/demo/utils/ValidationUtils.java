@@ -6,7 +6,7 @@ import ru.biponline.demo.entity.OrdersEntity;
 import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.exception.ValidationExceptionOrders;
 public class ValidationUtils {
-    public static void validateorders(OrdersEntity orders) throws ValidationExceptionOrders {
+    public static void ValidationClients(OrdersEntity orders) throws ValidationExceptionOrders {
         String ordersTitle = orders.getOrders();
         if(ordersTitle == null || ordersTitle.isBlank() || ordersTitle.length() < 3 || ordersTitle.length() > 35)
             throw new ValidationExceptionOrders("Название книги должно быть в приделах от 3 до 35 символов");
