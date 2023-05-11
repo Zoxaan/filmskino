@@ -14,7 +14,7 @@ public class ProductsResponse extends BaseResponse
     }
     public ProductsResponse(ProductsEntity products)
     {
-        super(true,"products data");
+        super(true,"products");
     }
     private ProductsEntity products;
 }

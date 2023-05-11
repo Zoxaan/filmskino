@@ -10,7 +10,7 @@ public class ClientsListResponse extends BaseResponse
 {
     public ClientsListResponse(Iterable<ClientsEntity>data)
     {
-        super(true,"авторы");
+        super(true,"клиенты");
         this.data= data;
 
     }

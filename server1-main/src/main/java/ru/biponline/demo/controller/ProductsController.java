@@ -7,6 +7,7 @@ import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.response.BaseResponse;
 import ru.biponline.demo.response.ProductsListResponse;
 import ru.biponline.demo.service.ProductsService;
+import ru.biponline.demo.utils.ValidationUtils;
 
 import static ru.biponline.demo.utils.ProductsValidationUtils.validationProducts;
 
@@ -53,19 +54,50 @@ public class ProductsController {
 
     @GetMapping("/name")
     public ResponseEntity<BaseResponse> findByName(@RequestParam String name) {
-        return ResponseEntity.ok(new ProductsListResponse(service.findByName(name)));
+        try {
+            Iterable<ProductsEntity> product = service.findByName(name);
+            if (product.iterator().hasNext())
+                return ResponseEntity.ok(new ProductsListResponse(service.findByName(name)));
+            else
+                return ResponseEntity.ok(new BaseResponse(true,"Данные не найдены"));
+        }catch (Exception e){
+            return ResponseEntity.ok(new ProductsListResponse(service.findByName(name)));
+        }
     }
     @GetMapping("/category")
     public ResponseEntity<BaseResponse> findByCategory(@RequestParam String category) {
-        return ResponseEntity.ok(new ProductsListResponse(service.findByCategory(category)));
+        try {
+            Iterable<ProductsEntity> prod = service.findByCategory(category);
+            if (prod.iterator().hasNext())
+                return ResponseEntity.ok(new ProductsListResponse(service.findByCategory(category)));
+            else
+                return ResponseEntity.ok(new BaseResponse(true, "Данные не найдены"));
+        } catch (Exception e) {
+            return ResponseEntity.ok(new ProductsListResponse(service.findByCategory(category)));
+        }
     }
     @GetMapping("/material")
     public ResponseEntity<BaseResponse> findByMaterial(@RequestParam String material) {
-        return ResponseEntity.ok(new ProductsListResponse(service.findByMaterial(material)));
+        try {
+            Iterable<ProductsEntity> produ = service.findByMaterial(material);
+            if (produ.iterator().hasNext())
+                return ResponseEntity.ok(new ProductsListResponse(service.findByMaterial(material)));
+            else
+                return ResponseEntity.ok(new BaseResponse(true, "Данные не найдены"));
+        } catch (Exception e) {
+            return ResponseEntity.ok(new ProductsListResponse(service.findByMaterial(material)));
+        }
     }
     @GetMapping("/qanitity")
     public ResponseEntity<BaseResponse> findByQanitity(@RequestParam int qanitity) {
-        return ResponseEntity.ok(new ProductsListResponse(service.findByQanitity(qanitity)));
+        try {
+            Iterable<ProductsEntity> prodc = service.findByQanitity(qanitity);
+            if (prodc.iterator().hasNext())
+                return ResponseEntity.ok(new ProductsListResponse(service.findByQanitity(qanitity)));
+            else
+                return ResponseEntity.ok(new BaseResponse(true, "Данные не найдены"));
+        } catch (Exception e) {
+            return ResponseEntity.ok(new ProductsListResponse(service.findByQanitity(qanitity)));
+        }
     }
-
 }

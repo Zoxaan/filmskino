@@ -19,6 +19,7 @@ public class ClientsEntity
     private String name;
     @NotBlank(message = "Фамилия не может быть пустым")
     private String lastname;
+    @NotBlank(message = "Отчество не может быть пустым")
     private String surname;
     @JsonIgnore
    @OneToMany(cascade =  CascadeType.ALL,mappedBy = "clients")

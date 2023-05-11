@@ -16,7 +16,6 @@ public class ValidationUtils {
         ProductsEntity products = orders.getProducts();
         if (products == null) //|| publishing.getPublishing().isBlank() || publishing.getPublishing().length() < 3 || publishing.getPublishing().length() > 30
             throw new ValidationExceptionOrders("Название издательства должна быть от 3 до 30 символов");
-
     }
 }
 

@@ -10,7 +10,11 @@ public class ProductsValidationUtils {
             throw new ValidationExceptionProducts("Название пустое");
         } else if (name.length() < 3 || name.length() > 20) {
             throw new ValidationExceptionProducts("Название должно быть в диапозоне от 3 до 20");
+            }
+            if (!name.matches("^[A-ЯЁ][а-яё]+$")) {
+                throw new ValidationExceptionProducts("Название должно начинаться с заглавной буквы и на русском языке");
         }
+
         String products = data.getProducts();
         if (products == null || products.isBlank()) {
             throw new ValidationExceptionProducts("Название товара пустое");
@@ -20,6 +24,7 @@ public class ProductsValidationUtils {
         if (!products.matches("^[A-ЯЁ][а-яё]+$")) {
             throw new ValidationExceptionProducts("Название товара должно начинаться с заглавной буквы и на русском языке");
         }
+
         String category = data.getCategory();
         if (category == null || category.isBlank()) {
             throw new ValidationExceptionProducts("Название категории пустое");
@@ -42,29 +47,8 @@ public class ProductsValidationUtils {
         String productsIntQanitity = String.valueOf(data.getQanitity());
         if (productsIntQanitity.isBlank()|| productsIntQanitity.equals("0")) {
             throw new ValidationExceptionProducts("Не было введено никаких символов");
+
         }else if (productsIntQanitity.isBlank() || !productsIntQanitity.matches("[\\d0-9]{1,4}"))
             throw new ValidationExceptionProducts("Минимальное кол-во символов в количество 1 до 4 символов");
-
     }
 }
-//    String name = data.getName();
-//        if (name == null||name.isBlank()) {
-//                throw new ValidationExceptionClients("Имя клиента не может быть пустым");
-//                } else if (name.length() < 3 || name.length() > 20){
-//        throw new ValidationExceptionClients("Имя должно быть в диапозоне от 3 до 20");
-//
-//        }
-//        if (!name.matches("^[A-ЯЁ][а-яё]+$")){
-//        throw new ValidationExceptionClients("Имя должно начинаться с заглавной буквы и на русском языке");
-//        }
-//
-//        String lastname = data.getLastname();
-//        if (!lastname.matches("^[A-ЯЁ][а-яё]+$")){
-//        throw new ValidationExceptionClients("Фамилия должна начинаться с заглавной буквы и на русском языке");
-//        }
-//
-//        String surname = data.getSurname();
-//        if (!surname.matches("^[A-ЯЁ][а-яё]+$")) {
-//        throw new ValidationExceptionClients("Отчество должно начинаться с заглавной буквы и на русском языке");
-//        }
-//        }

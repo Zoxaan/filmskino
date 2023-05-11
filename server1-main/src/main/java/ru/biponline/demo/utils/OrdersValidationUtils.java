@@ -8,6 +8,11 @@ public class OrdersValidationUtils {
         String title = orders.getOrders();
         if (title == null || title.isBlank()) {
             throw new ValidationExceptionOrders("Поле название заказа не должно быть пустым");
+        } else if (title.length() < 3 || title.length() > 20){
+   throw new ValidationExceptionOrders("Имя должно быть в диапозоне от 3 до 20");
+        }
+        if (!title.matches("^[A-ЯЁ][а-яё]+$")){
+        throw new ValidationExceptionOrders("Название заказа должно начинаться с заглавной буквы и на русском языке");
         }
         if (orders.getClients() == null) {
             throw new ValidationExceptionOrders("нужно выбрать клиента");
