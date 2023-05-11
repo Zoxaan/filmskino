@@ -39,7 +39,11 @@ public class ProductsValidationUtils {
         if (!material.matches("^[A-ЯЁ][а-яё]+$")) {
             throw new ValidationExceptionProducts("Название материала должно начинаться с заглавной буквы и на русском языке");
         }
-        int qanitity = data.getQanitity();
+        String productsIntQanitity = String.valueOf(data.getQanitity());
+        if (productsIntQanitity.isBlank()|| productsIntQanitity.equals("0")) {
+            throw new ValidationExceptionProducts("Не было введено никаких символов");
+        }else if (productsIntQanitity.isBlank() || !productsIntQanitity.matches("[\\d0-9]{1,4}"))
+            throw new ValidationExceptionProducts("Минимальное кол-во символов в количество 1 до 4 символов");
 
     }
 }
