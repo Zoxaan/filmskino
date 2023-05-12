@@ -10,6 +10,8 @@ public class OrdersListResponse extends BaseResponse {
     public OrdersListResponse(Iterable<OrdersEntity> data) {
         super(true, "Список заказов:");
         this.data=data;
+
+
     }
     private Iterable<OrdersEntity> data;
 }

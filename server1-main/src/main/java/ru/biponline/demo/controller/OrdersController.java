@@ -3,12 +3,16 @@ package ru.biponline.demo.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.biponline.demo.entity.OrdersEntity;
+import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.response.BaseResponse;
 import ru.biponline.demo.response.OrdersListResponse;
+import ru.biponline.demo.response.ProductsListResponse;
 import ru.biponline.demo.service.OrdersService;
 import ru.biponline.demo.utils.OrdersValidationUtils;
 
 import javax.validation.executable.ValidateOnExecution;
+import javax.xml.crypto.Data;
+import java.sql.Date;
 
 @RestController
 @RequestMapping("api/v1/orders")
@@ -60,5 +64,17 @@ public class OrdersController {
     @GetMapping()
     public ResponseEntity<BaseResponse> getProducts(@RequestParam String name){
         return ResponseEntity.ok(new OrdersListResponse(service.getName(name)));
+    }
+    @GetMapping("/datetime")
+    public ResponseEntity<BaseResponse> findByDatetime(@RequestParam String datetime) {
+        try {
+            Iterable<OrdersEntity> dat = service.findByDatetime(datetime);
+            if (dat.iterator().hasNext())
+                return ResponseEntity.ok(new OrdersListResponse(service.findByDatetime(datetime)));
+            else
+                return ResponseEntity.ok(new BaseResponse(false, "По такой дате, заказа не существует"));
+        } catch (Exception e) {
+            return ResponseEntity.ok(new OrdersListResponse(service.findByDatetime(datetime)));
+        }
     }
 }

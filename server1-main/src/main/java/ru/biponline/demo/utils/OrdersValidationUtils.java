@@ -24,31 +24,14 @@ public class OrdersValidationUtils {
             throw new ValidationExceptionOrders("нужно выбрать товар");
         }
 //        Date date = orders.getDatetime();
-//        if (date == null){
-//            throw new ValidationExceptionOrders("")
+//        if (d == null || ){
+//            throw new ValidationExceptionOrders("");
 //        }
-
+        String date = orders.getDatetime();
+            if (date == null || !(date.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}"))) {
+                throw new ValidationExceptionOrders("Поле time не соответствует формату (2023-05-05)");
+            }
+        }
 
     }
-}
-//    String name = data.getName();
-//        if (name == null||name.isBlank()) {
-//                throw new ValidationExceptionClients("Имя клиента не может быть пустым");
-//                } else if (name.length() < 3 || name.length() > 20){
-//        throw new ValidationExceptionClients("Имя должно быть в диапозоне от 3 до 20");
-//
-//        }
-//        if (!name.matches("^[A-ЯЁ][а-яё]+$")){
-//        throw new ValidationExceptionClients("Имя должно начинаться с заглавной буквы и на русском языке");
-//        }
-//
-//        String lastname = data.getLastname();
-//        if (!lastname.matches("^[A-ЯЁ][а-яё]+$")){
-//        throw new ValidationExceptionClients("Фамилия должна начинаться с заглавной буквы и на русском языке");
-//        }
-//
-//        String surname = data.getSurname();
-//        if (!surname.matches("^[A-ЯЁ][а-яё]+$")) {
-//        throw new ValidationExceptionClients("Отчество должно начинаться с заглавной буквы и на русском языке");
-//        }
-//        }
+

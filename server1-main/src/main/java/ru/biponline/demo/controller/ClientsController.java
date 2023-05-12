@@ -49,10 +49,12 @@ public class ClientsController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<BaseResponse> getAll(){return ResponseEntity.ok(new ClientsListResponse(service.getAll())); }
+    public ResponseEntity<BaseResponse> getAll() {
+        try {
 
-
-
-
-
+            return ResponseEntity.ok(new ClientsListResponse(service.getAll()));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new BaseResponse(false, e.getMessage()));
+        }
+    }
 }
