@@ -1,7 +1,10 @@
 package ru.biponline.demo.utils;
 
+import lombok.Data;
 import ru.biponline.demo.entity.OrdersEntity;
 import ru.biponline.demo.exception.ValidationExceptionOrders;
+
+import java.util.Date;
 
 public class OrdersValidationUtils {
     public static void ordersValidationUtils(OrdersEntity orders) throws ValidationExceptionOrders {
@@ -20,6 +23,10 @@ public class OrdersValidationUtils {
         if (orders.getProducts() == null) {
             throw new ValidationExceptionOrders("нужно выбрать товар");
         }
+//        Date date = orders.getDatetime();
+//        if (date == null){
+//            throw new ValidationExceptionOrders("")
+//        }
 
 
     }

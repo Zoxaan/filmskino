@@ -3,6 +3,7 @@ package ru.biponline.demo.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.biponline.demo.entity.ClientsEntity;
+import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.response.BaseResponse;
 import ru.biponline.demo.response.ClientsListResponse;
 import ru.biponline.demo.service.ClientsService;
@@ -41,7 +42,6 @@ public class ClientsController {
     public ResponseEntity <BaseResponse> delete(@RequestParam Long id){
         try {
             service.delete(id);
-
             return ResponseEntity.ok(new BaseResponse(true, "клиент успешно удален"));
         } catch (Exception e) {
             return ResponseEntity. badRequest().body(new BaseResponse(false, e.getMessage()));

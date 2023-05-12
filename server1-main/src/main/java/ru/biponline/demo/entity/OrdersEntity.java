@@ -4,6 +4,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @Data
@@ -17,6 +18,8 @@ public class OrdersEntity {
     private Long id;
     @NotBlank
     private String orders;
+    @NotBlank
+    private Date datetime;
     @NotNull
     @ManyToOne
     @JoinColumn(name = "clients_id")

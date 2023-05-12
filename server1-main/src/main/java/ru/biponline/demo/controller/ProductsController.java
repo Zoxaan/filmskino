@@ -2,12 +2,15 @@ package ru.biponline.demo.controller;
 
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.response.BaseResponse;
 import ru.biponline.demo.response.ProductsListResponse;
 import ru.biponline.demo.service.ProductsService;
 import ru.biponline.demo.utils.ValidationUtils;
+
+import java.util.Optional;
 
 import static ru.biponline.demo.utils.ProductsValidationUtils.validationProducts;
 
@@ -40,14 +43,15 @@ public class ProductsController {
         }
     }
     @DeleteMapping("/delete")
-    public ResponseEntity <BaseResponse> delete(@RequestParam Long id){
+    public ResponseEntity<BaseResponse> delete(@RequestParam Long id) {
         try {
-            service.delete(id);
-            return ResponseEntity.ok(new BaseResponse(true, "Товар успешно удален"));
+                service.delete(id);
+            return ResponseEntity.ok(new BaseResponse(true,"Удалено"));
         } catch (Exception e) {
-            return ResponseEntity. badRequest().body(new BaseResponse(false, e.getMessage()));
+            return ResponseEntity.badRequest().body(new BaseResponse(false, "не найдено"));
         }
     }
+
 
     @GetMapping("/all")
     public ResponseEntity<BaseResponse> getAll(){return ResponseEntity.ok(new ProductsListResponse(service.getAll())); }

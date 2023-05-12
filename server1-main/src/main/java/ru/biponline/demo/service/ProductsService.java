@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.repo.ProductsRepo;
 
+import java.util.Optional;
+
 @Service
 public class ProductsService {
     private final ProductsRepo repo;
@@ -11,7 +13,8 @@ public class ProductsService {
         this.repo = repo;
     }
     public void save(ProductsEntity products) {repo.save(products);}
-    public void delete(Long id){repo.deleteById(id);}
+    public void delete(Long id) { repo.deleteById(id); }
+    public Optional<ProductsEntity> deleteById (Long id) { return repo.findById(id); }
     public Iterable<ProductsEntity> getAll(){return repo.findAll();}
     public Iterable<ProductsEntity> findByName (String  name) { return  repo.findByName(name); }
     public Iterable<ProductsEntity> findByCategory (String  category) { return  repo.findByCategory(category); }
