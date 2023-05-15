@@ -23,14 +23,11 @@ public class OrdersValidationUtils {
         if (orders.getProducts() == null) {
             throw new ValidationExceptionOrders("нужно выбрать товар");
         }
-//        Date date = orders.getDatetime();
-//        if (d == null || ){
-//            throw new ValidationExceptionOrders("");
-//        }
-        String date = orders.getDatetime();
+
+       String date = orders.getData();
             if (date == null || !(date.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}"))) {
-                throw new ValidationExceptionOrders("Поле time не соответствует формату (2023-05-05)");
-            }
+               throw new ValidationExceptionOrders("Поле time не соответствует формату (2023-05-05)");
+           }
         }
 
     }

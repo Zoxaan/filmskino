@@ -14,7 +14,7 @@ public class OrdersService {
     public OrdersService(OrdersRepo repo) {
         this.repo = repo;
     }
-    public Iterable<OrdersEntity> findByDatetime (String datetime) { return  repo.findByDatetime(datetime); }
+    public Iterable<OrdersEntity> findByData (String data) { return  repo.findByData(data); }
     public void save(OrdersEntity orders) {repo.save(orders);}
     public void delete(Long id){repo.deleteById(id);}
     public Iterable<OrdersEntity> getAll(){return repo.findAll();}

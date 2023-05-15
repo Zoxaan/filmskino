@@ -19,7 +19,7 @@ public class OrdersEntity {
     @NotBlank
     private String orders;
     @NotBlank
-    private String datetime;
+    private String data;
     @NotNull
     @ManyToOne
     @JoinColumn(name = "clients_id")

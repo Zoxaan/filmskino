@@ -44,7 +44,7 @@ public class ClientsController {
             service.delete(id);
             return ResponseEntity.ok(new BaseResponse(true, "клиент успешно удален"));
         } catch (Exception e) {
-            return ResponseEntity. badRequest().body(new BaseResponse(false, e.getMessage()));
+            return ResponseEntity.badRequest().body(new BaseResponse(false, "не найдено"));
         }
     }
 

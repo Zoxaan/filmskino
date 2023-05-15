@@ -58,7 +58,7 @@ public class OrdersController {
             service.delete(id);
             return ResponseEntity.ok(new BaseResponse(true, "Заказ успешно удален"));
         } catch (Exception e) {
-            return ResponseEntity. badRequest().body(new BaseResponse(false, e.getMessage()));
+            return ResponseEntity.badRequest().body(new BaseResponse(false, "не найдено"));
         }
     }
     @GetMapping()
@@ -66,15 +66,15 @@ public class OrdersController {
         return ResponseEntity.ok(new OrdersListResponse(service.getName(name)));
     }
     @GetMapping("/datetime")
-    public ResponseEntity<BaseResponse> findByDatetime(@RequestParam String datetime) {
+    public ResponseEntity<BaseResponse> findByData(@RequestParam String data) {
         try {
-            Iterable<OrdersEntity> dat = service.findByDatetime(datetime);
+            Iterable<OrdersEntity> dat = service.findByData(data);
             if (dat.iterator().hasNext())
-                return ResponseEntity.ok(new OrdersListResponse(service.findByDatetime(datetime)));
+                return ResponseEntity.ok(new OrdersListResponse(service.findByData(data)));
             else
                 return ResponseEntity.ok(new BaseResponse(false, "По такой дате, заказа не существует"));
         } catch (Exception e) {
-            return ResponseEntity.ok(new OrdersListResponse(service.findByDatetime(datetime)));
+            return ResponseEntity.ok(new OrdersListResponse(service.findByData(data)));
         }
     }
 }

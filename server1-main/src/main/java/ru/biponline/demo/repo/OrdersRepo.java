@@ -8,6 +8,6 @@ import java.util.Date;
 
 public interface OrdersRepo extends CrudRepository<OrdersEntity, Long> {
     Iterable<OrdersEntity> findByClients_name(String name);
-    Iterable<OrdersEntity> findByDatetime (String datetime);
+    Iterable<OrdersEntity> findByData (String data);
 
 }
