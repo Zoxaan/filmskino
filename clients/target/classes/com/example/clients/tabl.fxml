@@ -9,16 +9,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutX="179.0" layoutY="72.0" prefHeight="200.0" prefWidth="315.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane layoutX="179.0" layoutY="72.0" prefHeight="200.0" prefWidth="315.0" style="-fx-background-color: #808080;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="клиенты">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="22.0" prefHeight="291.0" prefWidth="600.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView layoutY="22.0" prefHeight="291.0" prefWidth="600.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Имя" />
                             <TableColumn prefWidth="75.0" text="Фамилия" />
@@ -29,12 +28,12 @@
                            </columnResizePolicy>
                         </TableView>
                         <TextField layoutX="386.0" layoutY="325.0" />
-                        <Button layoutX="535.0" layoutY="325.0" mnemonicParsing="false" text="Поиск" />
+                        <Button layoutX="535.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3;" text="Поиск" />
                         <ButtonBar layoutX="14.0" layoutY="322.0" prefHeight="30.0" prefWidth="265.0">
                           <buttons>
-                            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Button" />
-                              <Button mnemonicParsing="false" text="Button" />
-                              <Button contentDisplay="CENTER" mnemonicParsing="false" text="Button" />
+                            <Button contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
+                              <Button contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
                           </buttons>
                         </ButtonBar>
                      </children>
@@ -45,7 +44,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="22.0" prefHeight="291.0" prefWidth="600.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tableOrders" layoutY="22.0" prefHeight="291.0" prefWidth="600.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="Название заказа" />
                               <TableColumn prefWidth="75.0" text="Имя клиента" />
@@ -56,12 +55,12 @@
                            </columnResizePolicy>
                         </TableView>
                         <TextField layoutX="386.0" layoutY="325.0" />
-                        <Button layoutX="535.0" layoutY="325.0" mnemonicParsing="false" text="Поиск" />
+                        <Button layoutX="535.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3;" text="Поиск" />
                         <ButtonBar layoutX="14.0" layoutY="322.0" prefHeight="30.0" prefWidth="265.0">
                           <buttons>
-                            <Button mnemonicParsing="false" text="Button" />
-                              <Button mnemonicParsing="false" text="Button" />
-                              <Button mnemonicParsing="false" text="Button" />
+                            <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
                           </buttons>
                         </ButtonBar>
                      </children>
@@ -70,9 +69,9 @@
             </Tab>
             <Tab text="товар">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #808080;">
                      <children>
-                        <TableView layoutY="22.0" prefHeight="291.0" prefWidth="600.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView layoutY="22.0" prefHeight="291.0" prefWidth="600.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="Название " />
                               <TableColumn prefWidth="75.0" text="товар" />
@@ -85,12 +84,12 @@
                            </columnResizePolicy>
                         </TableView>
                         <TextField layoutX="386.0" layoutY="325.0" />
-                        <Button layoutX="535.0" layoutY="325.0" mnemonicParsing="false" text="Поиск" />
+                        <Button layoutX="535.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3;" text="Поиск" />
                         <ButtonBar layoutX="14.0" layoutY="322.0" prefHeight="30.0" prefWidth="265.0">
                            <buttons>
-                              <Button mnemonicParsing="false" text="Button" />
-                              <Button mnemonicParsing="false" text="Button" />
-                              <Button mnemonicParsing="false" text="Button" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Button" />
                            </buttons>
                         </ButtonBar>
                      </children>
