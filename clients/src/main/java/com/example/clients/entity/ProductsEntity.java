@@ -9,7 +9,7 @@ public class ProductsEntity {
     private String products;
     private String category;
     private String material;
-    private int qanitity;
+    private String qanitity;
     @Override
     public String toString() {
         return products;

@@ -1,7 +1,10 @@
 package com.example.clients;
 
 import com.example.clients.controller.AddClientsController;
+import com.example.clients.controller.AddProductsController;
+import com.example.clients.controller.EditClientsController;
 import com.example.clients.entity.ClientsEntity;
+import com.example.clients.entity.ProductsEntity;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,13 +24,56 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
+    public static boolean showProductsAddDialog(ProductsEntity productsObj, int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("addProducts.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Products Editor");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            AddProductsController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setLabels(productsObj, id);
+
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
     public static boolean showClientsAddDialog(ClientsEntity clientsObj, int id) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Application.class.getResource("view/addClients.fxml"));
+            loader.setLocation(HelloApplication.class.getResource("addClients.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Clients Editor");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            AddClientsController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setLabels(clientsObj, id);
+
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static boolean showClientsEditDialog(ClientsEntity clientsobj, int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("editClients.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             Stage dialogStage = new Stage();
@@ -36,9 +82,9 @@ public class HelloApplication extends Application {
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            AddClientsController controller = loader.getController();
+            EditClientsController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setLabels(clientsObj, id);
+            controller.setLabels(clientsobj, id);
 
             dialogStage.showAndWait();
             return controller.isOkClicked();
