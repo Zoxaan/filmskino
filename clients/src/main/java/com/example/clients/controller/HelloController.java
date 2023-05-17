@@ -52,6 +52,8 @@ public class HelloController {
     @FXML
     private TableColumn<OrdersEntity, String> ordersNameClient;
     @FXML
+    private TableColumn<OrdersEntity, String> ordersNameProducts;
+    @FXML
     private TableColumn<OrdersEntity, String> orderData;
 
     @FXML
@@ -78,14 +80,14 @@ public class HelloController {
         tableProducts.setItems(productsData);
     }
     private void updateTableOrders() throws Exception {
-        ordersName.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("name"));
-        ordersNameClient.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("NameClient"));
-        orderData.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("DataOrder"));
+        ordersName.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("orders"));
+        ordersNameClient.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("clients"));
+        ordersNameProducts.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("products"));
+        orderData.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("data"));
         tableOrders.setItems(ordersData);
     }
     @FXML
     private void click_newClient() throws Exception {
-
         ClientsEntity tempClients = new ClientsEntity();
         clientsData.add(tempClients);
         HelloApplication.showClientsAddDialog(tempClients, clientsData.size()-1);
@@ -94,7 +96,6 @@ public class HelloController {
     }
     @FXML
     private void click_newProducts() throws Exception {
-
         ProductsEntity tempProducts = new ProductsEntity();
         productsData.add(tempProducts);
         HelloApplication.showProductsAddDialog(tempProducts, productsData.size()-1);
@@ -102,10 +103,90 @@ public class HelloController {
         getDataProducts();
     }
     @FXML
+    private void click_newOrders() throws IOException {
+        OrdersEntity tempOrder = new OrdersEntity();
+        ordersData.add(tempOrder);
+        HelloApplication.showPersonEditDialog(tempOrder, ordersData.size()-1);
+
+    }
+
+    @FXML
     private void click_editClients() {
         ClientsEntity selectedClient = tableClients.getSelectionModel().getSelectedItem();
         if (selectedClient != null)
             HelloApplication.showClientsEditDialog(selectedClient, clientsData.indexOf(selectedClient));
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутсвует выбраный клиент!");
+            alert.setContentText("Пожалуйста, выберите клиента из таблицы.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void click_editOrders() {
+        OrdersEntity selectedOrders = tableOrders.getSelectionModel().getSelectedItem();
+        if (selectedOrders != null)
+            HelloApplication.showPersonEditDialog(selectedOrders, ordersData.indexOf(selectedOrders));
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутсвует выбраный заказ!");
+            alert.setContentText("Пожалуйста, выберите заказ из таблицы.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void click_removeClients() throws IOException {
+        ClientsEntity selectedClient = tableClients.getSelectionModel().getSelectedItem();
+        if (selectedClient != null) {
+            System.out.println(selectedClient.getId());
+            System.out.println(http.delete(api+"clients/delete/?id=", selectedClient.getId()));
+            clientsData.remove(selectedClient);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутсвует выбраный клиент!");
+            alert.setContentText("Пожалуйста, выберите клиента из таблицы.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void click_removeProducts() throws IOException {
+        ProductsEntity selectedProducts = tableProducts.getSelectionModel().getSelectedItem();
+        if (selectedProducts != null) {
+            System.out.println(selectedProducts.getId());
+            System.out.println(http.delete(api+"products/delete/?id=", selectedProducts.getId()));
+            productsData.remove(selectedProducts);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутсвует выбраный товар!");
+            alert.setContentText("Пожалуйста, выберите товар из таблицы.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void click_removeOrders() throws IOException {
+        OrdersEntity selectedOrder = tableOrders.getSelectionModel().getSelectedItem();
+        if (selectedOrder != null) {
+            System.out.println(selectedOrder.getId());
+            System.out.println(http.delete(api+"orders/delete/?id=", selectedOrder.getId()));
+            ordersData.remove(selectedOrder);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ничего не выбрано");
+            alert.setHeaderText("Отсутсвует выбраный заказ!");
+            alert.setContentText("Пожалуйста, выберите заказ из таблицы");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void click_editProducts() {
+        ProductsEntity selectedProducts = tableProducts.getSelectionModel().getSelectedItem();
+        if (selectedProducts != null)
+            HelloApplication.showProductsEditDialog(selectedProducts, productsData.indexOf(selectedProducts));
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ничего не выбрано");
@@ -152,5 +233,8 @@ public class HelloController {
     }
     public static void updateClients(ClientsEntity clients) throws IOException {
         http.post(api+"clients/update", gson.toJson(clients).toString());
+    }
+    public static void updateOrders(OrdersEntity orders) throws IOException {
+        http.post(api+"orders/update", gson.toJson(orders).toString());
     }
 }

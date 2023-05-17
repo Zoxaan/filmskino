@@ -33,7 +33,7 @@
                           <buttons>
                             <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#click_newClient" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Add" />
                               <Button mnemonicParsing="false" onAction="#click_editClients" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Edit" />
-                              <Button contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Remove" />
+                              <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#click_removeClients" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Remove" />
                           </buttons>
                         </ButtonBar>
                      </children>
@@ -48,6 +48,7 @@
                            <columns>
                               <TableColumn fx:id="ordersName" prefWidth="75.0" text="Название заказа" />
                               <TableColumn fx:id="ordersNameClient" prefWidth="75.0" text="Имя клиента" />
+                              <TableColumn fx:id="ordersNameProducts" prefWidth="75.0" text="Название товара" />
                               <TableColumn fx:id="orderData" prefWidth="75.0" text="Дата заказа" />
                            </columns>
                            <columnResizePolicy>
@@ -58,9 +59,9 @@
                         <Button layoutX="535.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #D3D3D3;" text="Поиск" />
                         <ButtonBar layoutX="14.0" layoutY="322.0" prefHeight="30.0" prefWidth="265.0">
                           <buttons>
-                            <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Add" />
-                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Edit" />
-                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Remove" />
+                            <Button mnemonicParsing="false" onAction="#click_newOrders" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Add" />
+                              <Button mnemonicParsing="false" onAction="#click_editOrders" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Edit" />
+                              <Button mnemonicParsing="false" onAction="#click_removeOrders" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Remove" />
                           </buttons>
                         </ButtonBar>
                      </children>
@@ -88,8 +89,8 @@
                         <ButtonBar layoutX="14.0" layoutY="322.0" prefHeight="30.0" prefWidth="265.0">
                            <buttons>
                               <Button mnemonicParsing="false" onAction="#click_newProducts" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Add" />
-                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Edit" />
-                              <Button mnemonicParsing="false" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Remove" />
+                              <Button mnemonicParsing="false" onAction="#click_editProducts" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Edit" />
+                              <Button mnemonicParsing="false" onAction="#click_removeProducts" style="-fx-background-color: #D3D3D3; -fx-background-radius: 5px;" text="Remove" />
                            </buttons>
                         </ButtonBar>
                      </children>

@@ -37,7 +37,7 @@ public class EditClientsController {
             okClicked = true;
             editClientsStage.close();
             clientsData.set(clientsID, clients);
-            addClients(clients);
+            updateClients(clients);
         }
     }
     public void setLabels(ClientsEntity clientsIn, int clients_id) {
@@ -67,9 +67,9 @@ public class EditClientsController {
         }
     }
     public boolean isOkClicked(){return okClicked;}
-    public static void addClients(ClientsEntity clients) throws IOException {
+    public static void updateClients(ClientsEntity clients) throws IOException {
         System.out.println(clients.toString());
 //        clients.setId(null);
-        http.post(api+"client/update", gson.toJson(clients).toString());
+        http.post(api+"clients/update", gson.toJson(clients).toString());
     }
 }

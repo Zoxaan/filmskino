@@ -36,6 +36,7 @@ public class AddClientsController {
             editClientsStage.close();
             clientsData.set(clientsID, clients);
             addClients(clients);
+
         }
     }
     public void setLabels(ClientsEntity clientsIn, int clients_id) {

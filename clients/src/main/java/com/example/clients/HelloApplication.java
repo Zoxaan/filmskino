@@ -1,9 +1,8 @@
 package com.example.clients;
 
-import com.example.clients.controller.AddClientsController;
-import com.example.clients.controller.AddProductsController;
-import com.example.clients.controller.EditClientsController;
+import com.example.clients.controller.*;
 import com.example.clients.entity.ClientsEntity;
+import com.example.clients.entity.OrdersEntity;
 import com.example.clients.entity.ProductsEntity;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -47,6 +46,30 @@ public class HelloApplication extends Application {
             return false;
         }
     }
+    public static boolean showProductsEditDialog(ProductsEntity productsObj, int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("editProducts.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Products Editor");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            EditProductsController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setLabels(productsObj, id);
+
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static boolean showClientsAddDialog(ClientsEntity clientsObj, int id) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -85,6 +108,29 @@ public class HelloApplication extends Application {
             EditClientsController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setLabels(clientsobj, id);
+
+            dialogStage.showAndWait();
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static boolean showPersonEditDialog(OrdersEntity ordersObj, int id) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("addOrders.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Заказ");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            EditOrdersController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setLabels(ordersObj, id);
 
             dialogStage.showAndWait();
             return controller.isOkClicked();

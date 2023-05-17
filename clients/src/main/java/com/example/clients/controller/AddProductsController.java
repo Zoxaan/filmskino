@@ -79,7 +79,7 @@ public class AddProductsController {
     public boolean isOkClicked(){return okClicked;}
     public static void addProducts(ProductsEntity products) throws IOException {
         System.out.println(products.toString());
-        products.setProducts(null);
+        //products.setProducts(null);
         http.post(api+"products/add", gson.toJson(products).toString());
     }
 }
