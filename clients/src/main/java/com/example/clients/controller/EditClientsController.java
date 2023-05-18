@@ -51,9 +51,17 @@ public class EditClientsController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (clientsLastname_field.getText() == null || clientsLastname_field.getText().length() == 0) errorMessage = "Не обнаружено отчество клиента!\n";
-        if (clientsName_field.getText() == null || clientsName_field.getText().length() == 0) errorMessage = "Не обнаружено имя клиента!\n";
-        if (clientsSurname_field.getText() == null || clientsSurname_field.getText().length() == 0) errorMessage = "Не обнаружена фамилия клиента!\n";
+        try {
+            if (clientsName_field.getText() == null || clientsName_field.getText().length() == 0) errorMessage = "Не обнаружена Имя клиента!\n";
+            if (!clientsName_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||clientsName_field.getText() == null || clientsName_field.getText().length() == 0) errorMessage += "Некорректное Имя!\n";
+            if (clientsLastname_field.getText() == null || clientsLastname_field.getText().length() == 0) errorMessage = "Не обнаружено Фамилия клиента!\n";
+            if (!clientsLastname_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||clientsLastname_field.getText() == null || clientsLastname_field.getText().length() == 0) errorMessage += "Некорректная Фамилия!\n";
+            if (clientsSurname_field.getText() == null || clientsSurname_field.getText().length() == 0) errorMessage = "Не обнаружено Отчество клиента !\n";
+            if (!clientsSurname_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||clientsSurname_field.getText() == null || clientsSurname_field.getText().length() == 0) errorMessage += "Некорректное Отчество!\n";
+        }catch (Exception e) {
+            System.out.println(e);
+            errorMessage += "Пустое поле!";
+        }
 
         if (errorMessage.length() == 0) return true;
         else {

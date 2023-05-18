@@ -62,13 +62,33 @@ public class EditProductsController {
 
     private boolean isInputValid() {
         String errorMessage = "";
+try {
 
-        if (nameProducts_field.getText() == null || nameProducts_field.getText().length() == 0) errorMessage = "Не обнаружено наименование !\n";
-        if (productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
-        if (categoryProducts_field.getText() == null || categoryProducts_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
-        if (materialProducts_field.getText() == null || materialProducts_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
-        if (qanitityProducts_field.getText() == null || qanitityProducts_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
 
+    if (nameProducts_field.getText() == null || nameProducts_field.getText().length() == 0)
+        errorMessage = "Не обнаружено наименование !\n";
+    if (!nameProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") || nameProducts_field.getText() == null || nameProducts_field.getText().length() == 0)
+        errorMessage += "Некорректно введено название, Название начинается с заглавной буквы и на русском!\n";
+    if (productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0)
+        errorMessage = "Не обнаружен !\n";
+    if (!productsProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") || productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0)
+        errorMessage += "Некорректно введено Название товара начинается с заглавной буквы и на русском!\n";
+    if (categoryProducts_field.getText() == null || categoryProducts_field.getText().length() == 0)
+        errorMessage = "Не обнаружен !\n";
+    if (!categoryProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") || categoryProducts_field.getText() == null || categoryProducts_field.getText().length() == 0)
+        errorMessage += "Некорректна введена категория, Она должна начинается с заглавной буквы и на русском!\n";
+    if (materialProducts_field.getText() == null || materialProducts_field.getText().length() == 0)
+        errorMessage = "Не обнаружен !\n";
+    if (!materialProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") || materialProducts_field.getText() == null || materialProducts_field.getText().length() == 0)
+        errorMessage += "Некорректно введен материал, Он должен начинается с заглавной буквы и на русском !\n";
+    if (qanitityProducts_field.getText() == null || qanitityProducts_field.getText().length() == 0)
+        errorMessage = "Не обнаружен !\n";
+    if (!qanitityProducts_field.getText().matches("[\\d1-9]{1,4}") ||qanitityProducts_field.getText() == null || qanitityProducts_field.getText().length() == 0)
+        errorMessage += "Некорректно введено количество, должно начинаться с заглавной буквы и на русском!\n";
+}catch (Exception e){
+    System.out.println(e);
+    errorMessage += "Пустое поле!";
+}
         if (errorMessage.length() == 0) return true;
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

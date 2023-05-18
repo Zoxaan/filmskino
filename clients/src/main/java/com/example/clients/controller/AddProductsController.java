@@ -58,13 +58,23 @@ public class AddProductsController {
     }
     private boolean isInputValid() {
         String errorMessage = "";
+try {
+
 
         if (productsName_field.getText() == null || productsName_field.getText().length() == 0) errorMessage = "Не обнаружено наименование!\n";
+    if (!productsName_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||productsName_field.getText() == null || productsName_field.getText().length() == 0) errorMessage += "Некорректное название!\n";
         if (productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
+    if (!productsProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0) errorMessage += "Некорректное товар!\n";
         if (productsCategory_field.getText() == null || productsCategory_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
+    if (!productsCategory_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||productsCategory_field.getText() == null || productsCategory_field.getText().length() == 0) errorMessage += "Некорректное категория!\n";
         if (productsMaterial_field.getText() == null || productsMaterial_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
+    if (!productsMaterial_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||productsMaterial_field.getText() == null || productsMaterial_field.getText().length() == 0) errorMessage += "Некорректное материал!\n";
         if (productsQanitity_field.getText() == null || productsQanitity_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
-
+    if (!productsQanitity_field.getText().matches("[\\d0-9]{1,4}") ||productsQanitity_field.getText() == null || productsQanitity_field.getText().length() == 0) errorMessage += "Некорректное количество!\n";
+}catch (Exception e){
+    System.out.println(e);
+    errorMessage += "Пустое поле!";
+}
         if (errorMessage.length() == 0) return true;
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

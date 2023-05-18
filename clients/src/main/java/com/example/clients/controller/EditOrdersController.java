@@ -73,12 +73,12 @@ public class EditOrdersController {
     private boolean isInputValid() {
 
         String errorMessage = "";
-        if (!ordersName_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||ordersName_field.getText() == null || ordersName_field.getText().length() == 0) errorMessage += "Некорректное значение названия книги!\n";
-        if (ordersNameClient_field.getValue() == null || ordersNameClient_field.getValue().hashCode() == 0) errorMessage += "Не обнаружен автор книги!\n";
-        if (ordersNameProducts_field.getValue() == null || ordersNameProducts_field.getValue().hashCode() == 0) errorMessage += "Не обнаружено издание книги!\n";
-        if (orderData_field.getText() == null || orderData_field.getText().length() == 0) errorMessage += "Не обнаружен год выпуска книги!\n";
+        if (!ordersName_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||ordersName_field.getText() == null || ordersName_field.getText().length() == 0) errorMessage += "Некорректное значение названия заказа!\n";
+        if (ordersNameClient_field.getValue() == null || ordersNameClient_field.getValue().hashCode() == 0) errorMessage += "Не обнаружено Имя клиента!\n";
+        if (ordersNameProducts_field.getValue() == null || ordersNameProducts_field.getValue().hashCode() == 0) errorMessage += "Не обнаружен Товар!\n";
+        if (orderData_field.getText() == null || orderData_field.getText().length() == 0) errorMessage += "Не обнаружена дата заказа!\n";
 
-        if (!orderData_field.getText().matches("[0-9]{4}-[0-9]{2}-[0-9]{2}") || orderData_field.getText() == null) errorMessage += "Год  введен некорректно! \n";
+        if (!orderData_field.getText().matches("[0-9]{4}-[0-9]{2}-[0-9]{2}") || orderData_field.getText() == null) errorMessage += "Дата  введенна некорректно! \n";
         if (errorMessage.length() == 0) return true;
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

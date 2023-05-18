@@ -22,8 +22,8 @@
           <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="clientsLastname_field" prefHeight="26.0" prefWidth="102.0" GridPane.columnIndex="1" />
-            <TextField fx:id="clientsName_field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="clientsName_field" prefHeight="26.0" prefWidth="102.0" GridPane.columnIndex="1" />
+            <TextField fx:id="clientsLastname_field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="clientsSurname_field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Имя" />
             <Label text="Фамилия" GridPane.rowIndex="1" />
