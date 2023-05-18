@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="244.0" prefWidth="383.0" style="-fx-background-color: #97deeb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clients.controller.AddProductsController">
+<AnchorPane prefHeight="244.0" prefWidth="383.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clients.controller.AddProductsController">
    <children>
       <GridPane layoutX="14.0" layoutY="14.0" prefHeight="133.0" prefWidth="332.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="14.0">
         <columnConstraints>
@@ -24,22 +25,43 @@
             <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="productsProducts_field" prefHeight="26.0" prefWidth="102.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="productsCategory_field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="productsMaterial_field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Товар" GridPane.rowIndex="1" />
-            <Label text="Категория" GridPane.rowIndex="2" />
-            <Label text="Материал" GridPane.rowIndex="3" />
-            <TextField fx:id="productsQanitity_field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Количество" GridPane.rowIndex="4" />
-            <Label text="Название" />
-            <TextField fx:id="productsName_field" GridPane.columnIndex="1" />
+            <TextField fx:id="productsProducts_field" prefHeight="26.0" prefWidth="102.0" style="-fx-border-color: #000000; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="productsCategory_field" style="-fx-border-color: #000000; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="productsMaterial_field" style="-fx-border-color: #000000; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Товар" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label text="Категория" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label text="Материал" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <TextField fx:id="productsQanitity_field" style="-fx-border-color: #000000; -fx-border-radius: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Количество" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label text="Название">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <TextField fx:id="productsName_field" style="-fx-border-color: #000000; -fx-border-radius: 5px;" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <ButtonBar layoutX="102.0" layoutY="190.0" prefHeight="40.0" prefWidth="154.0">
+      <ButtonBar layoutX="72.0" layoutY="190.0" prefHeight="40.0" prefWidth="210.0">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#handleOk" text="Сохранить" />
-            <Button mnemonicParsing="false" onAction="#handleCancel" text="Закрыть" />
+          <Button mnemonicParsing="false" onAction="#handleOk" prefHeight="30.0" style="-fx-border-color: #000000; -fx-border-radius: 5px;" text="Сохранить">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" style="-fx-border-color: #000000; -fx-border-radius: 5px;" text="Закрыть">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
         </buttons>
       </ButtonBar>
    </children>
