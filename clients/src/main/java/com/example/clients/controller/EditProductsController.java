@@ -35,7 +35,7 @@ public class EditProductsController {
     @FXML
     private void handleOk() throws IOException {
         if (isInputValid()) {
-            products.setName(nameProducts_field.getText());
+            //products.setName(nameProducts_field.getText());
             products.setProducts(productsProducts_field.getText());
             products.setCategory(categoryProducts_field.getText());
             products.setMaterial(materialProducts_field.getText());
@@ -53,7 +53,7 @@ public class EditProductsController {
         this.products = productsIn;
         this.productsID = products_id;
 
-        nameProducts_field.setText(products.getName());
+        //nameProducts_field.setText(products.getName());
         productsProducts_field.setText(products.getProducts());
         categoryProducts_field.setText(products.getCategory());
         materialProducts_field.setText(products.getMaterial());
@@ -65,10 +65,7 @@ public class EditProductsController {
 try {
 
 
-    if (nameProducts_field.getText() == null || nameProducts_field.getText().length() == 0)
-        errorMessage = "Не обнаружено наименование !\n";
-    if (!nameProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") || nameProducts_field.getText() == null || nameProducts_field.getText().length() == 0)
-        errorMessage += "Некорректно введено название, Название начинается с заглавной буквы и на русском!\n";
+
     if (productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0)
         errorMessage = "Не обнаружен !\n";
     if (!productsProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") || productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0)

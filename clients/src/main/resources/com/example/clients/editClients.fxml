@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="180.0" prefWidth="336.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clients.controller.EditClientsController">
+<AnchorPane prefHeight="180.0" prefWidth="336.0" style="-fx-background-color: #29497F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clients.controller.EditClientsController">
    <children>
       <GridPane layoutX="10.0" layoutY="14.0" prefHeight="101.0" prefWidth="270.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="14.0">
         <columnConstraints>
@@ -40,15 +40,15 @@
                </font></Label>
          </children>
       </GridPane>
-      <ButtonBar layoutX="71.0" layoutY="126.0" prefHeight="40.0" prefWidth="210.0">
+      <ButtonBar layoutX="42.0" layoutY="126.0" prefHeight="40.0" prefWidth="252.0">
         <buttons>
-          <Button mnemonicParsing="false" onAction="#handleOk" prefHeight="30.0" style="-fx-border-color: #000000; -fx-border-radius: 5px;" text="Сохранить">
+          <Button mnemonicParsing="false" onAction="#handleOk" prefHeight="30.0" style="-fx-border-color: #000000; -fx-border-radius: 5px; -fx-background-color: #6A92D4;" text="Сохранить">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Arial Black" size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" style="-fx-border-color: #000000; -fx-border-radius: 5px;" text="Закрыть">
+            <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" style="-fx-border-color: #000000; -fx-border-radius: 5px; -fx-background-color: #6A92D4;" text="Закрыть">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Arial Black" size="14.0" />
                </font></Button>
         </buttons>
       </ButtonBar>

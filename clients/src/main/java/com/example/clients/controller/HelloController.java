@@ -28,11 +28,26 @@ public class HelloController {
     public static ObservableList<ProductsEntity> searchDataProducts = FXCollections.observableArrayList();
     public static ObservableList<ProductsEntity> searchDataMaterial = FXCollections.observableArrayList();
     public static ObservableList<ProductsEntity> searchDataCategory = FXCollections.observableArrayList();
+    public static ObservableList<ProductsEntity> searchDataQanitity = FXCollections.observableArrayList();
+    public static ObservableList<ClientsEntity> searchDataName = FXCollections.observableArrayList();
+    public static ObservableList<OrdersEntity> searchDataOrders = FXCollections.observableArrayList();
+
 
     static HTTPUtils http = new HTTPUtils();
     static Gson gson = new Gson();
+
+    @FXML
+    private TextField SearchFieldOrders;
+    @FXML
+    private TextField SearchFieldName;
     @FXML
     private TextField SearchFieldProducts;
+    @FXML
+    private TextField SearchFieldCategory;
+    @FXML
+    private TextField SearchFieldMaterial;
+    @FXML
+    private TextField SearchFielQanitity;
     @FXML
     public TableView<ClientsEntity> tableClients;
     @FXML
@@ -79,7 +94,7 @@ public class HelloController {
         tableClients.setItems(clientsData);
     }
     private void updateTableProducts() throws Exception {
-        productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
+       // productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
         productsProducts.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("products"));
         productsCategory.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("category"));
         productsMaterial.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("material"));
@@ -95,7 +110,7 @@ public class HelloController {
     }
     @FXML
     private void  SearchDataProducts() throws IOException{
-        String tov = http.get("http://localhost:2825/api/v1/products/name?name=", SearchFieldProducts.getText());
+        String tov = http.get("http://localhost:2825/api/v1/products/products?products=", SearchFieldProducts.getText());
         System.out.println(tov);
         JsonObject base = gson.fromJson(tov, JsonObject.class);
         JsonArray dataArr = base.getAsJsonArray("data");
@@ -103,47 +118,98 @@ public class HelloController {
             ProductsEntity newpro = gson.fromJson(dataArr.get(i).toString(),ProductsEntity.class);
             searchDataProducts.add(newpro);
         }
-        productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
+        //productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
         productsProducts.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("products"));
         productsCategory.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("category"));
         productsMaterial.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("material"));
         productsQanitity.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("qanitity"));
         tableProducts.setItems(searchDataProducts);
     }
-//    @FXML
-//    private void  SearchDataCategory() throws IOException{
-//        String cat = http.get("http://localhost:2825/api/v1/products/category?category=", SearchFieldCategory.getText());
-//        System.out.println(cat);
-//        JsonObject base = gson.fromJson(cat, JsonObject.class);
-//        JsonArray dataArr = base.getAsJsonArray("data");
-//        for(int i = 0; i < dataArr.size();i++){
-//            ProductsEntity newpro = gson.fromJson(dataArr.get(i).toString(),ProductsEntity.class);
-//            searchDataCategory.add(newpro);
-//        }
-//        productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
-//        productsProducts.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("products"));
-//        productsCategory.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("category"));
-//        productsMaterial.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("material"));
-//        productsQanitity.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("qanitity"));
-//        tableProducts.setItems(searchDataProducts);
-//    }
-//    @FXML
-//    private void  SearchDataMaterial() throws IOException{
-//        String rov = http.get("http://localhost:2825/api/v1/products/material?material=", SearchFieldMaterial.getText());
-//        System.out.println(rov);
-//        JsonObject base = gson.fromJson(rov, JsonObject.class);
-//        JsonArray dataArr = base.getAsJsonArray("data");
-//        for(int i = 0; i < dataArr.size();i++){
-//            ProductsEntity nepro = gson.fromJson(dataArr.get(i).toString(),ProductsEntity.class);
-//            searchDataMaterial.add(nepro);
-//        }
-//        productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
-//        productsProducts.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("products"));
-//        productsCategory.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("category"));
-//        productsMaterial.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("material"));
-//        productsQanitity.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("qanitity"));
-//        tableProducts.setItems(searchDataMaterial);
-//    }
+   @FXML
+    private void  SearchDataCategory() throws IOException{
+        String cat = http.get("http://localhost:2825/api/v1/products/category?category=", SearchFieldCategory.getText());
+        System.out.println(cat);
+        JsonObject base = gson.fromJson(cat, JsonObject.class);
+        JsonArray dataArr = base.getAsJsonArray("data");
+        for(int i = 0; i < dataArr.size();i++){
+            ProductsEntity newpro = gson.fromJson(dataArr.get(i).toString(),ProductsEntity.class);
+            searchDataCategory.add(newpro);
+        }
+       // productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
+        productsProducts.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("products"));
+        productsCategory.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("category"));
+        productsMaterial.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("material"));
+        productsQanitity.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("qanitity"));
+        tableProducts.setItems(searchDataCategory);
+    }
+    @FXML
+   private void  SearchDataMaterial() throws IOException{
+        String rov = http.get("http://localhost:2825/api/v1/products/material?material=", SearchFieldMaterial.getText());
+       System.out.println(rov);
+       JsonObject base = gson.fromJson(rov, JsonObject.class);
+        JsonArray dataArr = base.getAsJsonArray("data");
+        for(int i = 0; i < dataArr.size();i++){
+            ProductsEntity nepro = gson.fromJson(dataArr.get(i).toString(),ProductsEntity.class);
+            searchDataMaterial.add(nepro);
+        }
+        //productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
+        productsProducts.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("products"));
+        productsCategory.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("category"));
+        productsMaterial.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("material"));
+        productsQanitity.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("qanitity"));
+        tableProducts.setItems(searchDataMaterial);
+   }
+    @FXML
+    private void  SearchDataOrders() throws IOException{
+        String rov = http.get("http://localhost:2825/api/v1/orders/orders?orders=", SearchFieldOrders.getText());
+        System.out.println(rov);
+        JsonObject base = gson.fromJson(rov, JsonObject.class);
+        JsonArray dataArr = base.getAsJsonArray("data");
+        for(int i = 0; i < dataArr.size();i++){
+            OrdersEntity nepro = gson.fromJson(dataArr.get(i).toString(),OrdersEntity.class);
+            searchDataOrders.add(nepro);
+        }
+       // productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
+        ordersName.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("orders"));
+        orderData.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("data"));
+        ordersNameClient.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("clients"));
+        ordersNameProducts.setCellValueFactory(new PropertyValueFactory<OrdersEntity, String>("products"));
+
+        tableOrders.setItems(searchDataOrders);
+    }
+    @FXML
+    private void  SearchDataClients() throws IOException{
+        String rov = http.get("http://localhost:2825/api/v1/clients/clients?name=", SearchFieldName.getText());
+        System.out.println(rov);
+        JsonObject base = gson.fromJson(rov, JsonObject.class);
+        JsonArray dataArr = base.getAsJsonArray("data");
+        for(int i = 0; i < dataArr.size();i++){
+            ClientsEntity nepr = gson.fromJson(dataArr.get(i).toString(),ClientsEntity.class);
+            searchDataName.add(nepr);
+        }
+        // productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
+        clientsName.setCellValueFactory(new PropertyValueFactory<ClientsEntity, String>("name"));
+        clientsSurname.setCellValueFactory(new PropertyValueFactory<ClientsEntity, String>("surname"));
+        clientsLastname.setCellValueFactory(new PropertyValueFactory<ClientsEntity, String>("lastname"));
+        tableClients.setItems(searchDataName);
+    }
+    @FXML
+    private void  SearchDataQanitity() throws IOException{
+        String rov = http.get("http://localhost:2825/api/v1/products/qanitity?qanitity=", SearchFielQanitity.getText());
+        System.out.println(rov);
+        JsonObject base = gson.fromJson(rov, JsonObject.class);
+        JsonArray dataArr = base.getAsJsonArray("data");
+        for(int i = 0; i < dataArr.size();i++){
+            ProductsEntity nepro = gson.fromJson(dataArr.get(i).toString(),ProductsEntity.class);
+            searchDataQanitity.add(nepro);
+        }
+        // productsName.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("name"));
+        productsProducts.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("products"));
+        productsCategory.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("category"));
+        productsMaterial.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("material"));
+        productsQanitity.setCellValueFactory(new PropertyValueFactory<ProductsEntity, String>("qanitity"));
+        tableProducts.setItems(searchDataQanitity);
+    }
     @FXML
     void refrashtableProducts(ActionEvent event) throws Exception{
         tableProducts.getItems().clear();

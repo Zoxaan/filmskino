@@ -11,8 +11,8 @@ import java.io.IOException;
 import static com.example.clients.controller.HelloController.*;
 
 public class AddProductsController {
-    @FXML
-    private TextField productsName_field;
+    //@FXML
+   // private TextField productsName_field;
     @FXML
     private TextField productsProducts_field;
     @FXML
@@ -33,7 +33,7 @@ public class AddProductsController {
     @FXML
     private void handleOk() throws IOException {
         if (isInputValid()) {
-            products.setName(productsName_field.getText());
+           // products.setName(productsName_field.getText());
             products.setProducts(productsProducts_field.getText());
             products.setCategory(productsCategory_field.getText());
             products.setMaterial(productsMaterial_field.getText());
@@ -50,7 +50,7 @@ public class AddProductsController {
         this.products = productsIn;
         this.productsID = products_id;
 
-        productsName_field.setText(products.getProducts());
+       // productsName_field.setText(products.getProducts());
         productsProducts_field.setText(products.getProducts());
         productsCategory_field.setText(products.getProducts());
         productsMaterial_field.setText(products.getProducts());
@@ -61,8 +61,8 @@ public class AddProductsController {
 try {
 
 
-        if (productsName_field.getText() == null || productsName_field.getText().length() == 0) errorMessage = "Не обнаружено наименование!\n";
-    if (!productsName_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||productsName_field.getText() == null || productsName_field.getText().length() == 0) errorMessage += "Некорректное название!\n";
+      //  if (productsName_field.getText() == null || productsName_field.getText().length() == 0) errorMessage = "Не обнаружено наименование!\n";
+   // if (!productsName_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||productsName_field.getText() == null || productsName_field.getText().length() == 0) errorMessage += "Некорректное название!\n";
         if (productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
     if (!productsProducts_field.getText().matches("^[A-ЯЁ][а-яё]+$") ||productsProducts_field.getText() == null || productsProducts_field.getText().length() == 0) errorMessage += "Некорректное товар!\n";
         if (productsCategory_field.getText() == null || productsCategory_field.getText().length() == 0) errorMessage = "Не обнаружен !\n";
