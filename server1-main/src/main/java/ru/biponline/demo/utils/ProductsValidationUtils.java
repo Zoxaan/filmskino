@@ -5,16 +5,6 @@ import ru.biponline.demo.exception.ValidationExceptionProducts;
 
 public class ProductsValidationUtils {
     public static void validationProducts(ProductsEntity data) throws ValidationExceptionProducts {
-        String name = data.getName();
-        if (name == null || name.isBlank()) {
-            throw new ValidationExceptionProducts("Название пустое");
-        } else if (name.length() < 3 || name.length() > 20) {
-            throw new ValidationExceptionProducts("Название должно быть в диапозоне от 3 до 20");
-            }
-            if (!name.matches("^[A-ЯЁ][а-яё]+$")) {
-                throw new ValidationExceptionProducts("Название должно начинаться с заглавной буквы и на русском языке");
-        }
-
         String products = data.getProducts();
         if (products == null || products.isBlank()) {
             throw new ValidationExceptionProducts("Название товара пустое");

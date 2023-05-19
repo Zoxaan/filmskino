@@ -2,6 +2,7 @@ package ru.biponline.demo.service;
 
 import org.springframework.stereotype.Service;
 
+import ru.biponline.demo.entity.ClientsEntity;
 import ru.biponline.demo.entity.OrdersEntity;
 import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.repo.OrdersRepo;
@@ -20,4 +21,5 @@ public class OrdersService {
     public Iterable<OrdersEntity> getAll(){return repo.findAll();}
     public Iterable<OrdersEntity> getName(String name){
         return repo.findByClients_name(name); }
+    public Iterable<OrdersEntity> findByOrders (String  orders) { return  repo.findByOrders(orders); }
 }

@@ -6,6 +6,7 @@ import ru.biponline.demo.entity.ClientsEntity;
 import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.response.BaseResponse;
 import ru.biponline.demo.response.ClientsListResponse;
+import ru.biponline.demo.response.ProductsListResponse;
 import ru.biponline.demo.service.ClientsService;
 import ru.biponline.demo.utils.ClientsValidationUtils;
 
@@ -55,6 +56,18 @@ public class ClientsController {
             return ResponseEntity.ok(new ClientsListResponse(service.getAll()));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new BaseResponse(false, e.getMessage()));
+        }
+    }
+    @GetMapping("/clients")
+    public ResponseEntity<BaseResponse> findByClients(@RequestParam String name) {
+        try {
+            Iterable<ClientsEntity> productc = service.findByName(name);
+            if (productc.iterator().hasNext())
+                return ResponseEntity.ok(new ClientsListResponse(service.findByName(name)));
+            else
+                return ResponseEntity.ok(new BaseResponse(true,"Данные не найдены"));
+        }catch (Exception e){
+            return ResponseEntity.ok(new ClientsListResponse(service.findByName(name)));
         }
     }
 }

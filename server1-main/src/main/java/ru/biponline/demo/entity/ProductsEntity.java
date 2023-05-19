@@ -15,8 +15,6 @@ public class ProductsEntity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message =  "имя")
-    private String name;
     @NotBlank(message =  "товар")
     private String products;
     @NotBlank(message =  "категория")

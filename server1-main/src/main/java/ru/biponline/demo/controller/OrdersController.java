@@ -2,9 +2,11 @@ package ru.biponline.demo.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.biponline.demo.entity.ClientsEntity;
 import ru.biponline.demo.entity.OrdersEntity;
 import ru.biponline.demo.entity.ProductsEntity;
 import ru.biponline.demo.response.BaseResponse;
+import ru.biponline.demo.response.ClientsListResponse;
 import ru.biponline.demo.response.OrdersListResponse;
 import ru.biponline.demo.response.ProductsListResponse;
 import ru.biponline.demo.service.OrdersService;
@@ -75,6 +77,18 @@ public class OrdersController {
                 return ResponseEntity.ok(new BaseResponse(false, "По такой дате, заказа не существует"));
         } catch (Exception e) {
             return ResponseEntity.ok(new OrdersListResponse(service.findByData(data)));
+        }
+    }
+    @GetMapping("/orders")
+    public ResponseEntity<BaseResponse> findByOrders(@RequestParam String orders) {
+        try {
+            Iterable<OrdersEntity> productc = service.findByOrders(orders);
+            if (productc.iterator().hasNext())
+                return ResponseEntity.ok(new OrdersListResponse(service.findByOrders(orders)));
+            else
+                return ResponseEntity.ok(new BaseResponse(true,"Данные не найдены"));
+        }catch (Exception e){
+            return ResponseEntity.ok(new OrdersListResponse(service.findByOrders(orders)));
         }
     }
 }

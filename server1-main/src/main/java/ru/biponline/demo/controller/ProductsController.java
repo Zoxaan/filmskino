@@ -56,16 +56,16 @@ public class ProductsController {
     @GetMapping("/all")
     public ResponseEntity<BaseResponse> getAll(){return ResponseEntity.ok(new ProductsListResponse(service.getAll())); }
 
-    @GetMapping("/name")
-    public ResponseEntity<BaseResponse> findByName(@RequestParam String name) {
+    @GetMapping("/products")
+    public ResponseEntity<BaseResponse> findByProducts(@RequestParam String products) {
         try {
-            Iterable<ProductsEntity> product = service.findByName(name);
+            Iterable<ProductsEntity> product = service.findByProducts(products);
             if (product.iterator().hasNext())
-                return ResponseEntity.ok(new ProductsListResponse(service.findByName(name)));
+                return ResponseEntity.ok(new ProductsListResponse(service.findByProducts(products)));
             else
                 return ResponseEntity.ok(new BaseResponse(true,"Данные не найдены"));
         }catch (Exception e){
-            return ResponseEntity.ok(new ProductsListResponse(service.findByName(name)));
+            return ResponseEntity.ok(new ProductsListResponse(service.findByProducts(products)));
         }
     }
     @GetMapping("/category")
